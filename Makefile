@@ -77,13 +77,13 @@ build-open-nic-shell:
 		-num_cmac_port $(NUM_CMAC_PORT)
 
 get-devices:
-	vivado -mode batch -notrace -source vnp4_framework/scripts/get_devices.tcl -tclargs $(PROGRAM_HW_SERVER)
+	vivado -mode batch -notrace -source scripts/get_devices.tcl -tclargs $(PROGRAM_HW_SERVER)
 
 program-bit: $(BIT_FILE)
-	vivado -mode batch -source vnp4_framework/scripts/program_bit.tcl -tclargs $(PROGRAM_HW_SERVER) $(PROGRAM_DEVICE_NAME) $(BIT_FILE)
+	vivado -mode batch -source scripts/program_bit.tcl -tclargs $(PROGRAM_HW_SERVER) $(PROGRAM_DEVICE_NAME) $(BIT_FILE)
 
 program-mcs: $(MCS_FILE)
-	vivado -mode batch -source vnp4_framework/scripts/program_mcs.tcl -tclargs $(PROGRAM_HW_SERVER) $(PROGRAM_DEVICE_NAME) $(MCS_FILE) $(PROGRAM_FLASH_PART)
+	vivado -mode batch -source scripts/program_mcs.tcl -tclargs $(PROGRAM_HW_SERVER) $(PROGRAM_DEVICE_NAME) $(MCS_FILE) $(PROGRAM_FLASH_PART)
 
 log:
 	cat $(OPEN_NIC_SHELL_PATH)/script/vivado.log
